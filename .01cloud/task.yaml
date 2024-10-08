@@ -49,5 +49,6 @@ spec:
     - name: deploy
       image: 199012118961/nodeapp-image:latest 
       script: |
-        echo "Deploy successfully"
+        echo "Starting Node.js app..."
+        npm start
 
