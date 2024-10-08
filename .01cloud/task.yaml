@@ -46,9 +46,22 @@ spec:
   workspaces:
   - name: workspace
   steps:
-    - name: deploy
-      image: 199012118961/nodeapp-image:latest 
-      script: |
-        echo "Starting Node.js app..."
-        npm start
+  - name: increase-file-limit
+    image: alpine
+    script: |
+      # Increase the file descriptor limit to avoid "too many open files" error
+      ulimit -n 65536
+      echo "Increased file limit to 65536."
 
+  - name: deploy
+    image: 199012118961/nodeapp-image:latest
+    script: |
+      echo "Starting Node.js app..."
+      npm install
+      npm start
+
+  - name: list-running-processes
+    image: alpine
+    script: |
+      echo "Listing running processes..."
+      ps aux
