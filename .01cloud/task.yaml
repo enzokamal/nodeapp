@@ -53,12 +53,20 @@ spec:
       ulimit -n 65536
       echo "Increased file limit to 65536."
 
+  - name: increase-inotify-limit
+    image: alpine
+    script: |
+      # Increase inotify watch limit to avoid too many open files error
+      echo fs.inotify.max_user_watches=65536 | tee -a /etc/sysctl.conf
+      sysctl -p
+      echo "Increased inotify watch limit."
+
   - name: deploy
     image: 199012118961/nodeapp-image:latest
     script: |
-      echo "Starting Node.js app..."
-      npm install
-      npm start
+      echo "Starting Node.js app in the background..."
+      NODE_ENV=production nohup npm start &  # Run in production mode
+      echo "Node.js app started, continuing with the pipeline."
 
   - name: list-running-processes
     image: alpine
