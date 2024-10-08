@@ -47,7 +47,7 @@ spec:
   - name: workspace
   steps:
     - name: deploy
-      image: "${DOCKER_URL}:$shavalue" 
+      image: 199012118961/nodeapp-image:latest 
       script: |
         echo "Deploy successfully"
 
