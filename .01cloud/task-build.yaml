@@ -21,7 +21,7 @@ spec:
         echo $shavalue
         until docker ps; do sleep 3; done;
         if [[ ! -z "$(params.dockerignore)" ]] && [[ ! -f ".dockerignore" ]]; then echo "$(params.dockerignore)" > .dockerignore; fi
-        docker login -u "${DOCKER_USER}" -p "${DOCKER_TOKEN}" 2>/dev/null || exit 1
+        docker login -u "${DOCKER_USER}" -p "${DOCKER_PASSWORD}" 2>/dev/null || exit 1
         docker build . -t "${DOCKER_URL}:latest || exit 1
         echo "Successfully built"
       volumeMounts:
@@ -40,7 +40,7 @@ spec:
         echo $shavalue
         echo ${WEBHOOK}
         until docker ps; do sleep 3; done;
-        docker login -u "${DOCKER_USER}" -p "${DOCKER_TOKEN}" 2>/dev/null || exit 1
+        docker login -u "${DOCKER_USER}" -p "${DOCKER_PASSWORD}" 2>/dev/null || exit 1
         docker push "${DOCKER_URL}:latest || exit
         curl -X POST ${WEBHOOK} -d "{\"repository\":\"docker.io/${DOCKER_URL}\",\"tag\":\"$shavalue\"}"
         echo "Successfully pushed"
