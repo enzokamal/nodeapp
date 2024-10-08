@@ -48,7 +48,7 @@ spec:
       - mountPath: /var/run/
         name: dind-socket
       - mountPath: /var/lib/docker
-        name: dind-storage   
+        name: dind-storage     
   sidecars:
     - image: docker:20.10-dind
       name: server
