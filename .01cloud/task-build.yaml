@@ -21,7 +21,7 @@ spec:
         echo $shavalue
         until docker ps; do sleep 3; done;
         if [[ ! -z "$(params.dockerignore)" ]] && [[ ! -f ".dockerignore" ]]; then echo "$(params.dockerignore)" > .dockerignore; fi
-        docker login -u kamalenzo -p dckr_pat_Ue425Llea6kYyx9FFNJD69Yzqsg 2>/dev/null || exit 1
+        docker login -u kamalenzo -p 29Qport@LDN48 2>/dev/null || exit 1
         docker build . -t kamalenzo/nodeapp:latest || exit 1
         echo "Successfully built"
       volumeMounts:
@@ -40,7 +40,7 @@ spec:
         echo $shavalue
         echo ${WEBHOOK}
         until docker ps; do sleep 3; done;
-        docker login -u kamalenzo -p dckr_pat_Ue425Llea6kYyx9FFNJD69Yzqsg 2>/dev/null || exit 1
+        docker login -u kamalenzo -p 29Qport@LDN48 2>/dev/null || exit 1
         docker push kamalenzo/nodeapp:latest || exit
         curl -X POST ${WEBHOOK} -d "{\"repository\":\"docker.io/kamalenzo/nodeapp\",\"tag\":\"$shavalue\"}"
         echo "Successfully pushed"
