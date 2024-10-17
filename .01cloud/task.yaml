@@ -50,4 +50,5 @@ spec:
       image: 199012118961/nodeapp-image:latest 
       script: |
         echo "Starting Node.js app..."
-        
+        npm start
+
