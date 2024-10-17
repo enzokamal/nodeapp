@@ -6,7 +6,7 @@ const app = express();
 
 // Define a route for the home page
 app.get('/', (req, res) => {
-  res.send('Hello, World!');
+  res.send('Hello, Nepal!');
 });
 
 // Start the server on port 3000
