@@ -31,7 +31,7 @@ spec:
         name: dind-storage
     - name: push
       image: docker
-      script: |
+      script: |  
         #!/bin/sh
         apk add git
         apk add curl
