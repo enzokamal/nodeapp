@@ -46,7 +46,7 @@ spec:
   workspaces:
   - name: workspace
   steps:
-  - name: deploy
-    image: bitnami/git
-    script: |
-      echo "Deploy successfully"
+    - name: deploy
+      image: bitnami/git 
+      script: |
+        echo "Deploy successfully"
