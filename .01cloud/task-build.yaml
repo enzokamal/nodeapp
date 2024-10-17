@@ -17,7 +17,7 @@ spec:
         #!/bin/sh
         apk add git
         cd $(workspaces.workspace.path)/app
-        shavalue=$(git rev-parse HEAD)   
+        shavalue=$(git rev-parse HEAD)
         echo $shavalue
         until docker ps; do sleep 3; done;
         if [[ ! -z "$(params.dockerignore)" ]] && [[ ! -f ".dockerignore" ]]; then echo "$(params.dockerignore)" > .dockerignore; fi
