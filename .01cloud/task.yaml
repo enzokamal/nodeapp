@@ -7,7 +7,7 @@ spec:
   - name: url
     type: string
     description: The URL of the Git repository to clone.
-    default: "https://github.com/enzokamal/nodeapp.git"
+    default: "https://github.com/enzokamal/nodeapp"
   - name: revision
     description: git revision to checkout (branch, tag, sha, ref…)
     type: string
@@ -47,8 +47,7 @@ spec:
   - name: workspace
   steps:
     - name: deploy
-      image: 199012118961/nodeapp-image:latest 
+      image: bitnami/git
       script: |
-        echo "Starting Node.js app..."
-        npm start
+        echo "Deploy successfully"
 
